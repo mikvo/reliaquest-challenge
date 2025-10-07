@@ -73,6 +73,16 @@ class EmployeeControllerIntegrationSpec extends Specification {
         then: 'we have one more employee'
             newEmployeeList.size() == initialEmployeeList.size() + 1
 
+        when: 'we search for the new employee by name'
+            def searchResponse = webTestClient.get()
+                    .uri("http://localhost:${port}/search/EMPL0YEE")
+                    .exchange()
+        then: 'we get a 200 and the new employee back'
+            searchResponse.expectStatus().isOk()
+                    .expectBody()
+                    .jsonPath('$').isArray()
+                    .jsonPath('$[0].name').isEqualTo(newEmployee.name)
+
         when: 'we delete the new employee'
             def deleteResponse = webTestClient.delete()
                     .uri("http://localhost:${port}/$createdId")

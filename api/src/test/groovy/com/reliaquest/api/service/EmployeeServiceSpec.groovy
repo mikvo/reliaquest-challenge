@@ -231,4 +231,46 @@ class EmployeeServiceSpec extends Specification {
                     'No match here'
             ]
     }
+
+    def "top salary is returned correctly"() {
+        given:
+            backendEmployeeService.getAllEmployees() >> salaries.collect {
+                BackendEmployeeResponseDto.builder()
+                        .id(UUID.randomUUID().toString())
+                        .name("name")
+                        .salary(it)
+                        .age(50)
+                        .title('employee')
+                        .email("email@company.com")
+                        .build()
+            }
+        when:
+            def topSalary = employeeService.getTopPaidEmployees(1)
+        then:
+            topSalary.size() == 1
+            topSalary[0].salary == 1000
+        where:
+            salaries = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    }
+
+    def "top 10 salaries are returned correctly"() {
+        given:
+            backendEmployeeService.getAllEmployees() >> salaries.collect {
+                BackendEmployeeResponseDto.builder()
+                        .id(UUID.randomUUID().toString())
+                        .name("name")
+                        .salary(it)
+                        .age(50)
+                        .title('employee')
+                        .email("email@company.com")
+                        .build()
+            }
+        when:
+            def topSalary = employeeService.getTopPaidEmployees(10)
+        then:
+            topSalary.size() == 10
+            topSalary.every { it.salary >= 1100 }
+        where:
+            salaries = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000]
+    }
 }
