@@ -9,6 +9,14 @@ import spock.lang.Specification
 
 import java.time.Duration
 
+/**
+ * This is somewhat of an all-encompassing integration test in that it uses the exposed API to perform a series of
+ * operations to ensure that the API is working correctly. It will retrieve all the employees, create a new one, search
+ * for the new employee, and then delete it. It checks overall employee counts at appropriate times to ensure that the
+ * create/delete operations are working correctly. It also checks the retry logic by making a bunch of calls to the
+ * backend to force rate limiting and then checks that the retry logic works correctly. It is not fully sufficient
+ * to prove all edge cases, but it does provide a reasonable level of confidence that the API is working correctly.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class EmployeeControllerIntegrationSpec extends Specification {
 

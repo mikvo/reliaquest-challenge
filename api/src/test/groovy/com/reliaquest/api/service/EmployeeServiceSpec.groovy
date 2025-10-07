@@ -6,6 +6,13 @@ import com.reliaquest.api.model.EmployeeResponseConverter
 import com.reliaquest.api.model.NewEmployeeRequest
 import spock.lang.Specification
 
+/**
+ * This tests the majority of the service operations except for the retry logic. That is tested in the
+ * EmployeeControllerIntegrationSpec. The "back end" is mocked, so we don't have to worry about rate limiting or other
+ * network issues and can focus on the service logic. I use groovy/Spock for the tests because it's a framework I find
+ * very useful for testing and wanted to illustrate how I would approach it on my own. I could just as easily have used
+ * JUnit and Mockito, but I wanted to show something different.
+ */
 class EmployeeServiceSpec extends Specification {
     def backendEmployeeService = Mock(BackendEmployeeService)
     def converter = new EmployeeResponseConverter()
