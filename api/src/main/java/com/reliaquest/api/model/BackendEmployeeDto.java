@@ -11,6 +11,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class BackendEmployeeListDto {
-    private List<BackendEmployeeResponseDto> data;
+public class BackendEmployeeDto {
+    private BackendEmployeeResponseDto data;
+    private String status;
 }

@@ -3,7 +3,7 @@ package com.reliaquest.api.model
 import spock.lang.Specification
 import spock.lang.Subject
 
-class EmployeeResponseConverterTest extends Specification {
+class EmployeeResponseConverterSpec extends Specification {
     @Subject
     def converter = new EmployeeResponseConverter()
 

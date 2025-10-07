@@ -6,7 +6,7 @@ import com.reliaquest.api.model.EmployeeResponseConverter
 import com.reliaquest.api.model.NewEmployeeRequest
 import spock.lang.Specification
 
-class EmployeeServiceTest extends Specification {
+class EmployeeServiceSpec extends Specification {
     def backendEmployeeService = Mock(BackendEmployeeService)
     def converter = new EmployeeResponseConverter()
     def employeeService = new EmployeeService(backendEmployeeService, converter)

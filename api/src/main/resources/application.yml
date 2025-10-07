@@ -1,2 +1,10 @@
 spring.application.name: employee-api
 server.port: 8111
+
+backend:
+  url: http://localhost:8112/api/v1/employee
+  maxRetries: 10
+  retryBackoff: 1s
+  maxBackoff: 30s
+
+logging.level.com.reliaquest.api.service.BackendEmployeeService: DEBUG

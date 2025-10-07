@@ -1,4 +1,8 @@
 package com.reliaquest.api.service;
 
-public class TooManyRequestsException {
+import lombok.Data;
+import lombok.experimental.StandardException;
+
+@StandardException
+public class TooManyRequestsException extends RuntimeException {
 }

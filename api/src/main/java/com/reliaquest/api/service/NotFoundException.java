@@ -1,4 +1,7 @@
 package com.reliaquest.api.service;
 
-public class NotFoundException {
+import lombok.experimental.StandardException;
+
+@StandardException
+public class NotFoundException extends RuntimeException{
 }

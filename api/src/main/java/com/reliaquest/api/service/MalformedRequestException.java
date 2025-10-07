@@ -1,4 +1,7 @@
 package com.reliaquest.api.service;
 
-public class MalformedRequestException {
+import lombok.experimental.StandardException;
+
+@StandardException
+public class MalformedRequestException extends RuntimeException {
 }

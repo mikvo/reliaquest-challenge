@@ -1,4 +1,7 @@
 package com.reliaquest.api.service;
 
-public class UnexpectedServerException {
+import lombok.experimental.StandardException;
+
+@StandardException
+public class UnexpectedServerException extends RuntimeException {
 }
